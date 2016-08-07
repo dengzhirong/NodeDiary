@@ -15,6 +15,7 @@ let dbConfig = require("./../config/db.config"); // 数据库配置信息
  */
 /**
  * 使用例子：
+   let dbUtil = require("./../util/dbUtil.js");
    new dbUtil.DBConnection({
      sql: "select * from user limit 10",
      connectionSuccess: function(err) {

@@ -4,9 +4,12 @@ let express = require('express');
 let router = express.Router();
 
 //==================== 路由定义：用户登录页 ====================
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'hello',we: "world", test: "just for test" });
-// });
+// 用户登录页
+router.get('/', function(req, res, next) {
+    res.render('login', { 
+        title: '用户登录页'
+    });
+});
 
 // router.post('/home', function(req, res, next) {
 //   console.log("req: " + req.body.name);

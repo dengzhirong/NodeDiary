@@ -4,9 +4,12 @@ let express = require('express');
 let router = express.Router();
 
 //==================== 路由定义：日记统计页 ====================
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'hello',we: "world", test: "just for test" });
-// });
+// 日记统计页 
+router.get('/', function(req, res, next) {
+    res.render('statistic', { 
+        title: '日记统计页 '
+    });
+});
 
 // router.post('/home', function(req, res, next) {
 //   console.log("req: " + req.body.name);
