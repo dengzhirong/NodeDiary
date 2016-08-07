@@ -1,41 +1,53 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+'use strict';
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
 
-var app = express();
+let app = express();
 
-// view engine setup
+//==================== html模板引擎设置 ====================
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//==================== 路由定义 ====================
+let index = require('./routes/index.js');  // 首页
+let edit = require('./routes/edit.js');  // 日记编辑/发布页
+let login = require('./routes/login.js');  // 用户登录页
+let register = require('./routes/register.js');  // 用户注册页
+let show = require('./routes/show.js');  // 日记展示页
+let statistic = require('./routes/statistic.js');  // 日记统计页
+let todolist = require('./routes/todolist.js');  // to do list页
+
+//==================== 站点设置 ====================
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+//==================== 路由注册 ====================
+app.use('/', index);  // 首页
+app.use('/edit', register);  // 日记编辑/发布页
+app.use('/login', login);  // 用户登录页
+app.use('/register', register);  // 用户注册页
+app.use('/show', show);  // 日记展示页
+app.use('/statistic', statistic);  // 日记统计页
+app.use('/todolist', todolist);  // to do list页
 
-// catch 404 and forward to error handler
+//==================== 404页面 ====================
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handlers
 
-// development error handler
-// will print stacktrace
+//==================== 开发环境错误处理 ====================
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -46,8 +58,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+//==================== 生产环境错误处理 ====================
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -55,6 +66,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
