@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //==================== 路由注册 ====================
 app.use('/', index);  // 首页
-app.use('/edit', register);  // 日记编辑/发布页
+app.use('/edit', edit);  // 日记编辑/发布页
 app.use('/login', login);  // 用户登录页
 app.use('/register', register);  // 用户注册页
 app.use('/show', show);  // 日记展示页

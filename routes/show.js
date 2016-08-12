@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/detail', function(req, res, next) {
+    res.render('show', { 
+        title: '日记详情页'
+    });
+});
+
+
 // router.post('/home', function(req, res, next) {
 //   console.log("req: " + req.body.name);
 //   res.render('index', { title: 'home',we: "world", test: "It's the way for home." });

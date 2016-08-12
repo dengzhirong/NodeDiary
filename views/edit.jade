@@ -4,3 +4,27 @@ extends layout
 block content
     h1= title
     p Welcome to #{title}
+    form(action='/edit/publish', method='post')
+        div 用户名：
+            input(type='text', name='user', placeholder='用户名')
+        div 技术分享：
+            input(type='text', name='content_tech', placeholder='技术分享')
+        div 流水账：
+            input(type='text', name='content_normal', placeholder='流水账')
+        div 每天大事记：
+            input(type='text', name='content_important', placeholder='每天大事记')
+        div 标签：
+            input(type='text', name='tag', placeholder='标签')
+        div 技术分享状态：
+            input(type='text', name='tech_status', placeholder='技术分享状态')
+        div 流水账状态：
+            input(type='text', name='normal_status', placeholder='流水账状态')
+        div 心情：
+            input(type='text', name='mood', placeholder='心情')
+        div 天气：
+            input(type='text', name='weather', placeholder='天气')
+        div 发布日期：
+            input(type='text', name='dateTime', placeholder='发布日期')
+        div 最后修改时间：
+            input(type='text', name='lastModifyTime', placeholder='最后修改时间')
+        input(type='submit')
